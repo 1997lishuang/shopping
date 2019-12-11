@@ -18,6 +18,13 @@ public class CartController {
 
     @Autowired
     CartService cartService;
+
+    /**
+     *  查看 购物车 功能
+     * @param userId
+     * @param model
+     * @return
+     */
     @RequestMapping("/findAllItemByUserId")
     @ResponseBody
     public List<Cart> findAllItemByUserId(int userId, Model model){
@@ -30,8 +37,18 @@ public class CartController {
                   sum += cart.getGoodsTotalPrice();
         }
         model.addAttribute("allItemByUserId",allItemByUserId);
+//        为页面设置总价
+        model.addAttribute("sum",sum);
         return allItemByUserId;
     }
+
+    /**
+     * 添加购物项到购物车
+     * @param userId
+     * @param goodsId
+     * @param session
+     * @return
+     */
     @RequestMapping("/addItemToCart")
     @ResponseBody
     public int addItemToCart(int userId, int goodsId,HttpSession session){

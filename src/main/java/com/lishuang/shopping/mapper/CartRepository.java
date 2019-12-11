@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart,Integer> {
+//        通过 查询一个 用户下所有的商品 来 组成 购物车
         public List<Cart> findAllItemByUserId(int userId);
+
 }

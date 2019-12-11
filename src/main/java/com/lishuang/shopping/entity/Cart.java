@@ -1,9 +1,6 @@
 package com.lishuang.shopping.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "cart")
@@ -18,6 +15,10 @@ public class Cart {
     public int userId;
     public int goodsId;
     public String goodsImage;
+//    一个购物车 拥有 一个 商品 的 单向 关系
+    @OneToOne(targetEntity = Goods.class )
+    @JoinColumn(name = "goodsId", referencedColumnName = "goodsId",insertable=false, updatable=false)
+    public Goods goods;
 
     public String getGoodsImage() {
         return goodsImage;

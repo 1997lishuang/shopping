@@ -16,7 +16,10 @@ public class User {
     public String address;
     public int status;
     public int role;
-
+//    一个 用户 有 一个 购物车 一对一关系
+    @OneToOne(targetEntity = Cart.class)
+    @JoinColumn(name = "userId",referencedColumnName = "userId")
+    public Cart cart;
     public String getAddress() {
         return address;
     }
